@@ -1,3 +1,3 @@
-# invitation
+# Invitation
 
-## Dami and Junhyuk’s reception hall
+## Invitation for Dami and Junhyuk
