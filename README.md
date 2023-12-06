@@ -1,2 +1,3 @@
-# invitation
-카드캡터체리
+# Invitation
+
+## Invitation for Dami and Junhyuk
