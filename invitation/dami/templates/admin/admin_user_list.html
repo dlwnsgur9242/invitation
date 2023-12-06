@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>전체 회원 목록</title>
+</head>
+<body>
+<b><font size="5" color="gray">전체 회원 목록</font></b>
+<br><br>
+<table border="1" cellspacing="0">
+    <tr>
+        <th>아이디</th>
+        <th>회원 유형</th>
+        <th>이름</th>
+        <th>비밀번호</th>
+        <th>삭제</th>
+        <th>수정</th>
+    </tr>
+
+    {% for user in user_list %}
+    <tr>
+        <td>{{ user.id }}</td>
+        <td>{{ user_type }}</td>
+        <td>{{ user.username }}</td>
+        <td>{{ user.password }}</td>
+        <td>
+            <form method="post" action="{% url 'main:admin_user_delete' user.id %}">
+                {% csrf_token %}
+                <input type="submit" value="삭제">
+            </form>
+        <td>
+            <input type="button" value="수정" 
+                   onClick="location.href='{% url 'main:admin_user_modify' user.id %}'">
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+<br>
+<input type="button" value="확인" onClick="location.href='../admin_main'">
+
+</body>
+</html>

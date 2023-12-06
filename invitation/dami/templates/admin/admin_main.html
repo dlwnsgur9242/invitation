@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>관리자 페이지</title>
+    <script type="text/javascript">
+        function ProductModify(name, price) {
+            location.href = "admin/ProductList.jsp";
+        }
+    </script>
+</head>
+<body>
+  {% include 'admin/admin_nav.html' %}
+    <div align="center">
+        <h3>[오늘의 특가]</h3>
+        <table border="1">
+            {% for product in products %}
+            <tr align='center'>
+                <td>
+                    <table>
+                        <tr align='center'>
+                            <td>
+                                <img src="{{ product.img }}" width='150' height='150' />
+                            </td>
+                        </tr>
+                        <tr align='center'>
+                            <td>
+                                <b>{{ product.name }}</b>
+                            </td>
+                        </tr>
+                        <tr align='center'>
+                            <td>
+                                <b>₩{{ product.price }}원</b>
+                            </td>
+                        </tr>
+                        <tr align='center'>
+                            <td>
+                                <input type='button' value='상품정보수정' onclick="ProductModify('{{ product.name }}', '{{ product.price }}')" />
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+</html>

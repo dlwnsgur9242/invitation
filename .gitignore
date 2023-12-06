@@ -1,0 +1,8 @@
+# 가상환경 디렉토리
+django_env/
+
+# 파일
+secrets.json
+
+# Django
+__pycache__

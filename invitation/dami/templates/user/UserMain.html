@@ -1,0 +1,66 @@
+{% load static %}
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>UserMain</title>
+    <script type="text/javascript">
+        function fnCart(name, price) {
+            if (confirm("장바구니에 담으시겠습니까?")) {
+                location.href = "Pro/CartPro.jsp?name=" + name + "&price=" + price;
+            }
+        }
+
+        function fnView() {
+            if (confirm("장바구니를 보시겠습니까?")) {
+                location.href = "view/CartView.jsp";
+            }
+        }
+
+        function fndetail() {
+            // Add your function logic here
+        }
+    </script>
+</head>
+<body>
+    {% include 'user/UserMain_nav.html' %}
+    <div align="center">
+        <h3>[오늘의 특가]</h3>
+        <table border="1">
+            <tr align="right">
+                <td colspan="3">
+                    <input type="button" value="장바구니 보기" onclick="fnView()" />
+                </td>
+            </tr>
+            {% for product in products %}
+            <tr align='center'>
+                <td>
+                    <table>
+                        <tr align='center'>
+                            <td>
+                                <img src="{{ product.img }}" width='150' height='150' />
+                            </td>
+                        </tr>
+                        <tr align='center'>
+                            <td>
+                                <b>{{ product.name }}</b>
+                            </td>
+                        </tr>
+                        <tr align='center'>
+                            <td>
+                                <b>₩{{ product.price }}원</b>
+                            </td>
+                        </tr>
+                        <tr align='center'>
+                            <td>
+                                <input type='button' value='장바구니 담기' onclick="fnCart('{{ product.name }}', '{{ product.price }}')" />
+                                <input type='button' value='상세 페이지' onclick="fndetail()" />
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+</html>
